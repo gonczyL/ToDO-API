@@ -10,8 +10,11 @@ import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from .permissions import HasSessionToken
+
 
 class UserListView(APIView):
+    permission_classes = [HasSessionToken]
     def get(self, request):
         response = requests.get(
             'https://reqres.in/api/users',
@@ -38,6 +41,10 @@ class LoginView(APIView):
 
             if response.status_code == 200:
                 token = response.json().get('token')
+
+                # Csak ide mentjük:
+                request.session['auth_token'] = token
+
                 return Response({'token': token})
 
             return Response(response.json(), status=response.status_code)
@@ -47,9 +54,11 @@ class LoginView(APIView):
 
 
 
+
 class TaskListCreateView(generics.ListCreateAPIView):
     serializer_class = TaskSerializer
-
+    permission_classes = [HasSessionToken]
+    
     def get_queryset(self):
         return Task.objects.filter(user_id=self.kwargs['user_id'])
 
@@ -59,6 +68,13 @@ class TaskListCreateView(generics.ListCreateAPIView):
 class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TaskSerializer
     lookup_url_kwarg = 'task_id'
+    permission_classes = [HasSessionToken]
 
     def get_queryset(self):
         return Task.objects.filter(user_id=self.kwargs['user_id'])
+
+
+class LogoutView(APIView):
+    def post(self, request):
+        request.session.flush()  # törli az egész session-t
+        return Response({"message": "Logged out successfully"})
