@@ -145,7 +145,7 @@ Sikeres bejelentkezés után a token automatikusan elmentésre kerül a session-
 
 ---
 
-### GET /users/<id>/tasks – Egy felhasználó feladatainak listázása
+### GET /users/id/tasks – Egy felhasználó feladatainak listázása
 
 ### URL: GET http://127.0.0.1:8000/users/2/tasks
 
