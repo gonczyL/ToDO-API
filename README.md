@@ -273,3 +273,12 @@ DELETE http://127.0.0.1:8000/users/2/tasks/5
 ## Megjegyzés
 
 A hitelesítés csak akkor működik, ha előzőleg sikeresen bejelentkeztél. A token automatikusan tárolódik a session-ben, és minden további kérésnél használatra kerül.
+
+## Kijelentkezés
+
+A kijelentkezéshez használd a `POST /logout` végpontot:
+
+### URL: POST http://127.0.0.1:8000/logout
+
+Ez törli a session-ben tárolt tokent, és megszünteti a hitelesített kapcsolatot.
+
