@@ -190,7 +190,7 @@ Sikeres bejelentkezés után a token automatikusan elmentésre kerül a session-
 ]
 ```
 
-### POST /users/<id>/tasks – Új feladat hozzáadása
+### POST /users/id/tasks – Új feladat hozzáadása
 
 ### URL: POST http://127.0.0.1:8000/users/2/tasks
 
@@ -218,7 +218,7 @@ Sikeres bejelentkezés után a token automatikusan elmentésre kerül a session-
 }
 ```
 
-### GET /users/<id>/tasks/<task_id> – Feladat részletei
+### GET /users/id/tasks/task_id – Feladat részletei
 
 ### URL: GET http://127.0.0.1:8000/users/2/tasks/5
 
@@ -234,7 +234,7 @@ Sikeres bejelentkezés után a token automatikusan elmentésre kerül a session-
 }
 ```
 
-### PUT /users/<id>/tasks/<task_id> – Feladat módosítása
+### PUT /users/id/tasks/task_id – Feladat módosítása
 
 ### URL: PUT http://127.0.0.1:8000/users/2/tasks/5
 
@@ -262,7 +262,7 @@ Sikeres bejelentkezés után a token automatikusan elmentésre kerül a session-
 }
 ```
 
-### DELETE /users/<id>/tasks/<task_id> – Feladat törlése
+### DELETE /users/id/tasks/task_id – Feladat törlése
 
 ```
 DELETE http://127.0.0.1:8000/users/2/tasks/5
