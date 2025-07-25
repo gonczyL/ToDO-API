@@ -76,5 +76,5 @@ class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 class LogoutView(APIView):
     def post(self, request):
-        request.session.flush()  # törli az egész session-t
+        request.session.flush()
         return Response({"message": "Logged out successfully"})
